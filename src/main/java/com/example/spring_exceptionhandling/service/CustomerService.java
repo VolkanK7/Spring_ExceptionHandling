@@ -29,9 +29,8 @@ public class CustomerService {
 
     public Customer getCustomerById(Long customerId){
         Optional<Customer> optionalCustomer = customerRepository.findById(customerId);
-        Customer customer = optionalCustomer
+        return optionalCustomer
                 .orElseThrow(() -> new CustomerNotFoundException("Customer id:"+customerId+" not found!"));
-        return customer;
 
     }
 
