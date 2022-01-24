@@ -18,4 +18,12 @@ public class CustomExceptionHandler {
         ErrorResponse errorResponse = new ErrorResponse("Customer Not Null", detail);
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler(CustomerNotFoundException.class)
+    public ResponseEntity<?> customerNotFound(CustomerNotFoundException customerNotFoundException){
+        List<String> detail = new ArrayList<>();
+        detail.add(customerNotFoundException.getMessage());
+        ErrorResponse errorResponse = new ErrorResponse("Customer Not Found", detail);
+        return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);
+    }
 }
